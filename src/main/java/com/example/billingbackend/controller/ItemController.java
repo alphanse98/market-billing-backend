@@ -20,6 +20,12 @@ public class ItemController {
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
 
     }
+    @PostMapping("multiCreate")
+    public ResponseEntity<List<Item>> createItems(@RequestBody List<Item> item){
+        List<Item> savedItem = itemService.createItems(item);
+        return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
+
+    }
 
     @GetMapping("get")
     public ResponseEntity<List<Item>> getAllItems(){
