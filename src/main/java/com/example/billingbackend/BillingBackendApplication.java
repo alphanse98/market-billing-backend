@@ -9,8 +9,13 @@ public class BillingBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BillingBackendApplication.class, args);
 
-
 	}
+
+//	when the user login
+//	login Controller ----> UsernamePasswordAuthenticationToken ---->  authenticationManager ----> generate jwd token
+
+// after login
+// SpringSecurityConfig ---->  JwtTokenFilter ---->   UsernamePasswordAuthenticationToken
 
 }
 

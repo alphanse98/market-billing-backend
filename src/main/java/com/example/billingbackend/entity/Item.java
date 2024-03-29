@@ -25,11 +25,8 @@ public class Item {
     private String itemImg;
     @Column(nullable = false)
     private Double itemPrice;
-//    private boolean isActive;
+    @Column(nullable = false)
+    private boolean isActive;
     @Column(nullable = false)
     private Date createDate;
-
-
-
-
 }

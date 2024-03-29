@@ -1,26 +1,26 @@
 1) create items table like
 id  businessId      itemName       itemImg        itemPrince      isActive      createDate
-1    14536          tomato          tomato.png     10.5           true          27/03/2024
+1    1          tomato              tomato.png     10.5                 true          27/03/2024
 
 
-2) write api get all items data from items table (get api)
+2) write api get all items data from items table (get api)   ================== working
 api like like (http://localhost:8080/api/item/get )
 
 
 3) write api create single item (post api)
-api like like (http://localhost:8080/api/item/create )
+api like like (http://localhost:8080/api/item/create )           ================== working
 
 
 4) write api create many  items (post api)
-api like like (http://localhost:8080/api/item/createItems )
+api like like (http://localhost:8080/api/item/createItems )  ============================>
 
 
 5) write api update  item (put api)
-api like like (http://localhost:8080/api/item/update )
+api like like (http://localhost:8080/api/item/update ) ============================> error
 
 
 6) write api delete  item (put api)
-api like like (http://localhost:8080/api/item/delete )
+api like like (http://localhost:8080/api/item/delete ) ============================>
 
 note : i sent the businessId and id you need update isActive true to false in items table
 
