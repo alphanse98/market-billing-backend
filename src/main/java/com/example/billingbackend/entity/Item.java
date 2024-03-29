@@ -25,8 +25,9 @@ public class Item {
     private String itemImg;
     @Column(nullable = false)
     private Double itemPrice;
-//    private boolean isActive;
+    private boolean isActive;
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
 
 
