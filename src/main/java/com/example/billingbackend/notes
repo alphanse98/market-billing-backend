@@ -1,28 +1,41 @@
-1) create items table like
-id  businessId      itemName       itemImg        itemPrince      isActive      createDate
-1    14536          tomato          tomato.png     10.5           true          27/03/2024
+1) create customers  table like
+id   businessId      customersName       mobileNumber   address          secondaryMobileNumber (option)    email (option)       notes (option)     isActive      createDate
+1    1               ALphanse            9876543210     tamil nadu       9876543210                        customer@gmail.com   good customer      true          27/03/2024
 
+1) write api get all customers data from customers table (get api)
+api like like (http://localhost:8080/api/customers/get )
 
-2) write api get all items data from items table (get api)
-api like like (http://localhost:8080/api/item/get )
+2) write api create customers  (post api)
+api like like (http://localhost:8080/api/customers/create )
 
+3) write api update  customers (put api)
+api like like (http://localhost:8080/api/customers/update )
 
-3) write api create single item (post api)
-api like like (http://localhost:8080/api/item/create )
+4) write api delete  customers (put api)
+api like like (http://localhost:8080/api/customers/delete )
 
+note : i sent the businessId and id you need update isActive true to false in customers table
 
-4) write api create many  items (post api)
-api like like (http://localhost:8080/api/item/createItems )
+<< ================================================================================================================================================================ >>
 
+2) create Employee  table like
+id   businessId      employeeName      mobileNumber    password   address       access       email (option)           isActive      createDate
+1    1               aravinth           9876543210     123546     9876543210    dashboard    customer@gmail.com        true          27/03/2024
 
-5) write api update  item (put api)
-api like like (http://localhost:8080/api/item/update )
+1) write api get all employee data from employee table (get api)
+api like like (http://localhost:8080/api/employee/get )
 
+2) write api create employee  (post api)
+api like like (http://localhost:8080/api/employee/create )
 
-6) write api delete  item (put api)
-api like like (http://localhost:8080/api/item/delete )
+3) write api update  employee (put api)
+api like like (http://localhost:8080/api/employee/update )
 
-note : i sent the businessId and id you need update isActive true to false in items table
+4) write api delete  employee (put api)
+api like like (http://localhost:8080/api/employee/delete )
+
+note : i sent the businessId and id you need update isActive true to false in customers table
+
 
 
 
