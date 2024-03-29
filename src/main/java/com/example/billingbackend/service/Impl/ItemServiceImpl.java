@@ -40,8 +40,8 @@ public class ItemServiceImpl implements ItemService {
         itemfinded.setBusinessID(item.getBusinessID());
         itemfinded.setItemName(item.getItemName());
         itemfinded.setItemImg(item.getItemImg());
-        itemfinded.setCreateDate(item.getCreateDate());
-
+        itemfinded.setItemPrice(item.getItemPrice());
+//        itemfinded.setCreateDate(item.getCreateDate());
 
         itemRepository.save(itemfinded);
         return itemfinded;
