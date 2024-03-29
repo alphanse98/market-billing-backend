@@ -24,7 +24,6 @@ public class ItemController {
 
     @PostMapping("createItems")
     public ResponseEntity<List<Item>> createItems(@RequestBody List<Item> item){
-        System.out.println("item >>" + item);
         List<Item> savedItem = itemService.createItems(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
@@ -33,7 +32,6 @@ public class ItemController {
     public ResponseEntity<List<Item>> getAllItems(){
         List<Item> savedItems = itemService.getAllItems();
         return ResponseEntity.ok().body(savedItems);
-
     }
 
     @DeleteMapping("delete")
