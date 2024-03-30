@@ -1,3 +1,26 @@
+   @GetMapping("api/login")
+    public ResponseEntity<String>  jwtTest (){
+
+
+//        String userName = requestData.getUsername();
+//        String password = requestData.getPassword();
+
+        String userName = "admin";
+        String password = "admin";
+
+
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, password);
+//        System.out.println( "UsernamePasswordAuthenticationToken >> "+ token);
+
+
+
+        String jwtToken = JwtUtil.generateJwt(userName);
+        return ResponseEntity.ok(jwtToken);
+    }
+}
+
+
+
 1) create items table like
 id  businessId      itemName       itemImg        itemPrince      isActive      createDate
 1    1          tomato              tomato.png     10.5                 true          27/03/2024
