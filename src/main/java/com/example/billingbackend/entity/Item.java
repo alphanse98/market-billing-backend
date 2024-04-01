@@ -26,11 +26,10 @@ public class Item {
     @Column(nullable = false)
     private Double itemPrice;
     private boolean isActive;
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+
+    @Column(nullable = true) // Setting nullable to true makes the column optional
     private Date createDate;
-
-
-
-
 }
+
+
+
