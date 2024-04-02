@@ -25,6 +25,8 @@ public class LoginController {
         String userName = requestData.getUsername();
         String password = requestData.getPassword();
 
+        System.out.println("requestData >> " + requestData);
+
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, password);
 
         authenticationManager.authenticate(token);
