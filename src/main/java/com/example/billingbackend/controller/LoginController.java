@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     public JwtUtil JwtUtil;
-//    private AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @GetMapping("api/login")
     public ResponseEntity<String> jwtTest (@RequestBody LoginEtity requestData){
 
-        System.out.println( "req >> "+ requestData);
+//        System.out.println( "req >> "+ requestData);
 
         String userName = requestData.getUsername();
         String password = requestData.getPassword();
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, password);
 
-//        authenticationManager.authenticate(token);
+        authenticationManager.authenticate(token);
 
         String jetToken = JwtUtil.generateJwt(userName);
         return ResponseEntity.ok(jetToken) ;

@@ -21,6 +21,7 @@ public class JwtUtil {
     public  String  generateJwt(String username){
         String jwtToken = Jwts.builder()
                 .setSubject(username)
+
                 .setIssuer("alphanse.com")
                 .setIssuedAt(new Date(System.currentTimeMillis())) //set created time
                 .setExpiration(new Date(System.currentTimeMillis() + expireInMs)) // set exprite time
