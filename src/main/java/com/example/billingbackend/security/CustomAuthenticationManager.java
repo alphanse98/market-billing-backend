@@ -7,12 +7,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class CustomAuthenticationManager implements AuthenticationManager {
-    UsersRepository UsersRepository;
+    private UsersRepository UsersRepository;
+    private PasswordEncoder PasswordEncoder;
 
     @Override
     public Authentication authenticate(Authentication authenticationToken) throws AuthenticationException {
@@ -29,22 +31,15 @@ public class CustomAuthenticationManager implements AuthenticationManager {
             throw new AuthenticationException("Invalid credentials") {
             };
         }
-
-
-
-//        return null;
     }
 
     private boolean isValidUser(String username, String password) {
-        System.out.println(" pass >> " + password);
-        System.out.println("username  >> " + username );
 
+        UserEntity user = UsersRepository.findByUsername(username).get(); // find use details from DB
 
-//        UserEntity user = UsersRepository.findByUsername(username).get();
+        Boolean validateUser = user.getUsername().equals(username); // check usename
+        Boolean validatePass = PasswordEncoder.matches(password, user.getPassword()); // check password
 
-
-//        System.out.println("user from db   >> " + user );
-
-        return true;
+        return validateUser && validatePass;
     }
 }
