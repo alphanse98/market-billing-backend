@@ -19,7 +19,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
     @Override
     public Authentication authenticate(Authentication authenticationToken) throws AuthenticationException {
 
-        System.out.println("authenticationToken   >> " + authenticationToken );
+//        System.out.println("authenticationToken   >> " + authenticationToken );
 //             get username and password from params
         String username = authenticationToken.getName();
         String password = authenticationToken.getCredentials().toString();

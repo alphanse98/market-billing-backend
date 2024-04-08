@@ -5,6 +5,7 @@ import com.example.billingbackend.service.ItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,19 +21,20 @@ public class ItemController {
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
 
     }
-    @PostMapping("multiCreate")
+    @PostMapping("createItems")
     public ResponseEntity<List<Item>> createItems(@RequestBody List<Item> item){
         List<Item> savedItem = itemService.createItems(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
 
     }
 
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("get")
     public ResponseEntity<List<Item>> getAllItems(){
         List<Item> savedItems = itemService.getAllItems();
         return ResponseEntity.ok().body(savedItems);
-
     }
+
 
     @DeleteMapping("delete")
     public ResponseEntity<String> deleteItems(){
@@ -40,7 +42,7 @@ public class ItemController {
         return new ResponseEntity<>("deleted successfully:",HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("get/{id}")
     public ResponseEntity<Item> userById(@PathVariable("id") Long id){
         Item item = itemService.findByItemId(id);
         return ResponseEntity.ok().body(item);
@@ -48,7 +50,6 @@ public class ItemController {
 
     @PutMapping("update")
     public ResponseEntity<Item> userUpdate(@RequestBody Item item){
-        System.out.println("Item>>> " + item);
         Item itemUpdated = itemService.updateItem(item);
         return ResponseEntity.ok().body(itemUpdated);
     }
