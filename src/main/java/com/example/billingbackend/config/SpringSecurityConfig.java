@@ -32,7 +32,7 @@ public class SpringSecurityConfig {
         httpSecurity.csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET, "api/login").permitAll()
-//                .requestMatchers(HttpMethod.GET, "api/item/get").permitAll()
+                .requestMatchers(HttpMethod.POST, "api/register").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
