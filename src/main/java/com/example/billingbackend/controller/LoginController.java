@@ -1,8 +1,11 @@
 package com.example.billingbackend.controller;
 
-import com.example.billingbackend.entity.LoginEtity;
+import com.example.billingbackend.dto.AccountDto;
+import com.example.billingbackend.entity.AccountEntity;
+import com.example.billingbackend.entity.LoginEntity;
 import com.example.billingbackend.entity.UserEntity;
 import com.example.billingbackend.security.JwtUtil;
+import com.example.billingbackend.service.AccountService;
 import com.example.billingbackend.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +23,10 @@ public class LoginController {
     public JwtUtil JwtUtil;
     private AuthenticationManager authenticationManager;
     public  UserService UserService;
+    AccountService AccountService;
 
     @GetMapping("api/login")
-    public ResponseEntity<String> jwtTest (@RequestBody LoginEtity requestData){
+    public ResponseEntity<String> jwtTest (@RequestBody LoginEntity requestData){
 
 //        System.out.println( "req >> "+ requestData);
 
@@ -36,20 +40,33 @@ public class LoginController {
         authenticationManager.authenticate(token);
 
         String jetToken = JwtUtil.generateJwt(userName);
-        return ResponseEntity.ok(jetToken) ;
+        return ResponseEntity.ok(jetToken);
     }
 
     @PostMapping("api/register")
-    public  ResponseEntity<String>  account (@RequestBody UserEntity requestData){
+    public  ResponseEntity<String>  account (@RequestBody AccountDto requestData){
 
-        UserService.userRegister(requestData);
+        System.out.println(" <<<<<<<<<<<<<<< register >>>>>>" +  requestData);
+
+        // Convert AccountDto to AccountEntity
+        AccountEntity accountEntity = new AccountEntity();
+        accountEntity.setName(requestData.getName());
+        accountEntity.setBusinessName(requestData.getBusinessName());
+        accountEntity.setMobile(requestData.getMobile());
+        accountEntity.setSecMobile(requestData.getSecMobile());
+        accountEntity.setEmail(requestData.getEmail());
+        accountEntity.setAddress(requestData.getAddress());
+        accountEntity.setActive(requestData.isActive());
+
+        // Convert AccountDto to UserEntity
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(requestData.getUsername());
+        userEntity.setPassword(requestData.getPassword());
+
+        // Pass the entities to the respective service methods
+        AccountService.accountRegister(accountEntity);
+        UserService.userRegister(userEntity);
+
         return ResponseEntity.ok("Register successfully");
     }
-
-
-//    @PostMapping("api/register")
-//    public ResponseEntity<String>  register(@RequestBody UserEntity request){
-//        UserService.userRegister(request);
-//        return ResponseEntity.ok("Register successfully");
-//    }
 }
