@@ -1,5 +1,5 @@
 1) create customers  table like
-id   businessId      customersName       mobileNumber   address          secondaryMobileNumber (option)    email (option)       notes (option)     isActive      createDate
+id   businessId      customersName       mobileNumber   address          secMobile (option)    email (option)       notes (option)     isActive      createDate
 1    1               ALphanse            9876543210     tamil nadu       9876543210                        customer@gmail.com   good customer      true          27/03/2024
 
 1) write api get all customers data from customers table (get api)
