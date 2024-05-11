@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -17,7 +16,7 @@ public class AccountEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column( unique = true)
-    private String UUID;
+    private String businessID;
 
     @Column(nullable = false)
     private String name;

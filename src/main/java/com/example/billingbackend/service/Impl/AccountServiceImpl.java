@@ -16,4 +16,9 @@ public class AccountServiceImpl implements AccountService {
     public void accountRegister(AccountEntity request) {
         AccountRepository.save(request);
     }
+
+    @Override
+    public AccountEntity findByMobile(Long request) {
+        return AccountRepository.findByMobile(request);
+    }
 }

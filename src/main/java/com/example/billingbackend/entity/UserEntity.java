@@ -16,6 +16,12 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
+    @Column(nullable = false , unique = true)
+    private String businessID;
+
+    @Column(nullable = false)
+    private String role;
+
     @Column(nullable = false,unique = true)
     private String username;
 

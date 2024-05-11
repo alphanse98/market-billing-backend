@@ -1,5 +1,4 @@
 package com.example.billingbackend.controller;
-
 import com.example.billingbackend.dto.AccountDto;
 import com.example.billingbackend.entity.AccountEntity;
 import com.example.billingbackend.entity.LoginEntity;
@@ -58,13 +57,19 @@ public class LoginController {
         accountEntity.setAddress(requestData.getAddress());
         accountEntity.setActive(requestData.isActive());
 
+        AccountService.accountRegister(accountEntity);
+        AccountEntity accountData =  AccountService.findByMobile(requestData.getMobile());
+        System.out.println(" <<<<<<<<<<<<<<< mobile >>>>>>" +  accountData);
+
         // Convert AccountDto to UserEntity
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(requestData.getUsername());
         userEntity.setPassword(requestData.getPassword());
+        userEntity.setRole(requestData.getPassword());
+        userEntity.setBusinessID(accountData.getBusinessID());
 
         // Pass the entities to the respective service methods
-        AccountService.accountRegister(accountEntity);
+
         UserService.userRegister(userEntity);
 
         return ResponseEntity.ok("Register successfully");
