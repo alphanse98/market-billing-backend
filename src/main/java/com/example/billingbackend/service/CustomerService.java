@@ -4,6 +4,7 @@ import com.example.billingbackend.entity.CustomerEntity;
 
 import java.util.List;
 
+
 public interface CustomerService {
 
     void createCustomer(CustomerEntity request);
@@ -14,7 +15,7 @@ public interface CustomerService {
     CustomerEntity updateCustomer(CustomerEntity customer);
 
 
-    void deleteCustomers();
+    CustomerEntity deleteCustomers(CustomerEntity customer1, Long id);
 
 
 

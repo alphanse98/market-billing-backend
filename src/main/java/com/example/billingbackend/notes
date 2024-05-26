@@ -18,21 +18,21 @@ note : i sent the businessId and id you need update isActive true to false in cu
 
 << ================================================================================================================================================================ >>
 
-2) create Employee  table like
+2) create user  table like
 id   businessId      employeeName      mobileNumber    password   address       access       email (option)           isActive      createDate
 1    1               aravinth           9876543210     123546     9876543210    dashboard    customer@gmail.com        true          27/03/2024
 
-1) write api get all employee data from employee table (get api)
-api like like (http://localhost:8080/api/employee/get )
+1) write api get all users data from user table (get api)
+api like like (http://localhost:8080/api/user/get )
 
-2) write api create employee  (post api)
-api like like (http://localhost:8080/api/employee/create )
+2) write api create user  (post api)
+api like like (http://localhost:8080/api/user/create )
 
-3) write api update  employee (put api)
-api like like (http://localhost:8080/api/employee/update )
+3) write api update  user (put api)
+api like like (http://localhost:8080/api/user/update )
 
-4) write api delete  employee (put api)
-api like like (http://localhost:8080/api/employee/delete )
+4) write api delete  user (delete api)
+api like like (http://localhost:8080/api/user/delete )
 
 note : i sent the businessId and id you need update isActive true to false in customers table
 

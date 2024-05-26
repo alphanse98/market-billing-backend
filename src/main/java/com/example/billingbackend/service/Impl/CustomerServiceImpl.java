@@ -1,12 +1,14 @@
 package com.example.billingbackend.service.Impl;
 
 import com.example.billingbackend.entity.CustomerEntity;
+import com.example.billingbackend.entity.Item;
 import com.example.billingbackend.repository.CustomerRepository;
 import com.example.billingbackend.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -39,9 +41,16 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCustomers() {
+    public CustomerEntity deleteCustomers(CustomerEntity customer1, Long id) {
 
-        CustomerRepository.deleteAll();
+        CustomerEntity customerfind = CustomerRepository.findById(id).get();
+
+        if(customer1.isActive()==true){
+            customer1.setActive(false);
+        }
+
+        CustomerRepository.save(customerfind);
+        return customerfind;
     }
 
 
