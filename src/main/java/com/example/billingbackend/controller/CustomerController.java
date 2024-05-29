@@ -41,7 +41,7 @@ public class CustomerController {
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<CustomerEntity> deleteCustomer(@RequestBody CustomerEntity customer1, @PathVariable Long id){
         CustomerEntity customs=customerService.deleteCustomers(customer1,id);
         return new ResponseEntity<>(customs,HttpStatus.OK);

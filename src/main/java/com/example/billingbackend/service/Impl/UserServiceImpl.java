@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -20,4 +22,29 @@ public class UserServiceImpl implements UserService {
         request.setPassword(PasswordEncoder.encode(request.getPassword())); // encode pass
         UsersRepository.save(request);
     }
+
+    @Override
+    public UserEntity createUser(UserEntity userEntity) {
+        UserEntity userEntity1=UsersRepository.save(userEntity);
+        return userEntity1;
+    }
+
+    @Override
+    public List<UserEntity> getAllUsers() {
+        return UsersRepository.findAll();
+    }
+
+    @Override
+    public UserEntity updateUser(UserEntity userEntity) {
+        UserEntity user=UsersRepository.save(userEntity);
+        return user;
+    }
+
+    @Override
+    public void deleteUsers(Long id) {
+        UserEntity users=UsersRepository.findById(id).get();
+        UsersRepository.delete(users);
+    }
+
+
 }
