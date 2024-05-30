@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -30,8 +31,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerEntity updateCustomer(CustomerEntity customer) {
-
-
         CustomerEntity customerResponse;
         customerResponse = CustomerRepository.save(customer);
         return customerResponse;
@@ -39,9 +38,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCustomers() {
-
-        CustomerRepository.deleteAll();
+    public CustomerEntity deleteCustomers(CustomerEntity customer1, Long id) {
+        CustomerEntity customerfind = CustomerRepository.findById(id).get();
+        if(customer1.isActive()==true){
+            customer1.setActive(false);
+        }
+        CustomerRepository.save(customerfind);
+        return customerfind;
     }
 
 
