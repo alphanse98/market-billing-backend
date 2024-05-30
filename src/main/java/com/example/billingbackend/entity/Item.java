@@ -11,7 +11,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "items")
+@Table(name = "items", indexes = {
+        @Index(name = "idx_business_id", columnList = "businessID")
+})
 public class Item {
 
     @Id

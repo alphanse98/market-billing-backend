@@ -1,12 +1,10 @@
 1) create customers  table like
 id   businessId      customersName       mobileNumber   address          secMobile (option)    email (option)       notes (option)     isActive      createDate
-1    1               ALphanse            9876543210     tamil nadu       9876543210                        customer@gmail.com   good customer      true          27/03/2024
+1    1               Alphanse            9876543210     tamil nadu       9876543210                        customer@gmail.com   good customer      true          27/03/2024
 
 1) write api get all customers data from customers table (get api)
 api like like (http://localhost:8080/api/customers/get )
 
-2) write api create customers  (post api)
-api like like (http://localhost:8080/api/customers/create )
 
 3) write api update  customers (put api)
 api like like (http://localhost:8080/api/customers/update )
