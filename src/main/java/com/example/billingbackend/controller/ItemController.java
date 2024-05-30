@@ -18,22 +18,18 @@ public class ItemController {
     public ResponseEntity<Item> createItem(@RequestBody Item item){
         Item savedItem = itemService.createItem(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
-
     }
     @PostMapping("createItems")
     public ResponseEntity<List<Item>> createItems(@RequestBody List<Item> item){
         List<Item> savedItem = itemService.createItems(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
-
     }
 
-//    @PreAuthorize("isAuthenticated()")
     @GetMapping("get")
     public ResponseEntity<List<Item>> getAllItems(){
         List<Item> savedItems = itemService.getAllItems();
         return ResponseEntity.ok().body(savedItems);
     }
-
 
     @DeleteMapping("delete")
     public ResponseEntity<String> deleteItems(){

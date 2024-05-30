@@ -47,8 +47,4 @@ public class CustomerController {
         return new ResponseEntity<>(customs,HttpStatus.OK);
 
     }
-// test
-
-
-
 }

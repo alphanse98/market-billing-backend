@@ -1,8 +1,10 @@
 package com.example.billingbackend.controller;
 import com.example.billingbackend.dto.AccountDto;
+import com.example.billingbackend.dto.LoginDto;
 import com.example.billingbackend.entity.AccountEntity;
 import com.example.billingbackend.entity.LoginEntity;
 import com.example.billingbackend.entity.UserEntity;
+import com.example.billingbackend.repository.UsersRepository;
 import com.example.billingbackend.security.JwtUtil;
 import com.example.billingbackend.service.AccountService;
 import com.example.billingbackend.service.UserService;
@@ -19,27 +21,35 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class LoginController {
 
-    public JwtUtil JwtUtil;
-    private AuthenticationManager authenticationManager;
-    public  UserService UserService;
-    AccountService AccountService;
+     JwtUtil JwtUtil;
+     AuthenticationManager authenticationManager;
+     UserService UserService;
+     AccountService AccountService;
+     UsersRepository usersRepository;
 
     @GetMapping("api/login")
-    public ResponseEntity<String> jwtTest (@RequestBody LoginEntity requestData){
-
-//        System.out.println( "req >> "+ requestData);
+    public ResponseEntity<LoginDto> jwt (@RequestBody LoginEntity requestData){
 
         String userName = requestData.getUsername();
         String password = requestData.getPassword();
-
-//        System.out.println("requestData >> " + requestData);
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, password);
 
         authenticationManager.authenticate(token);
 
-        String jetToken = JwtUtil.generateJwt(userName);
-        return ResponseEntity.ok(jetToken);
+        String jwtToken = JwtUtil.generateJwt(userName); // generate jwtToken
+
+        UserEntity userDetails = usersRepository.findByUsername(userName).get(); // find username from DB
+
+        // jetToken and userDetails  to LoginResponse
+        LoginDto LoginResponse = new LoginDto();
+
+        LoginResponse.setAuthToken(jwtToken);
+        LoginResponse.setBusinessID(userDetails.getBusinessID());
+        LoginResponse.setUsername(userDetails.getUsername());
+        LoginResponse.setRole(userDetails.getRole());
+
+        return ResponseEntity.ok(LoginResponse);
     }
 
     @PostMapping("api/register")
