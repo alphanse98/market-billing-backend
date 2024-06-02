@@ -1,41 +1,47 @@
-1) create customers  table like
-id   businessId      customersName       mobileNumber   address          secMobile (option)    email (option)       notes (option)     isActive      createDate
-1    1               Alphanse            9876543210     tamil nadu       9876543210                        customer@gmail.com   good customer      true          27/03/2024
-
-1) write api get all customers data from customers table (get api)
-api like like (http://localhost:8080/api/customers/get )
+biilings (table)
+businessID 	billNumber 	customerName 	customeID 	date 	isActive	totalAmount	paidAmount	balanceAmount
 
 
-3) write api update  customers (put api)
-api like like (http://localhost:8080/api/customers/update )
-
-4) write api delete  customers (put api)
-api like like (http://localhost:8080/api/customers/delete )
-
-note : i sent the businessId and id you need update isActive true to false in customers table
-
-<< ================================================================================================================================================================ >>
-
-2) create user  table like
-id   businessId      employeeName      mobileNumber    password   address       access       email (option)           isActive      createDate
-1    1               aravinth           9876543210     123546     9876543210    dashboard    customer@gmail.com        true          27/03/2024
-
-1) write api get all users data from user table (get api)
-api like like (http://localhost:8080/api/user/get )
-
-2) write api create user  (post api)
-api like like (http://localhost:8080/api/user/create )
-
-3) write api update  user (put api)
-api like like (http://localhost:8080/api/user/update )
-
-4) write api delete  user (delete api)
-api like like (http://localhost:8080/api/user/delete )
-
-note : i sent the businessId and id you need update isActive true to false in customers table
+billingItems (table)
+billNumber 	businessID 	itemName	itemPrice	isActive	createDate	id	qut	totalAmount
 
 
 
 
-
-
+{
+    businessID : "1",
+    billNumber  : "1",
+    customeID   : "1",
+    customerName  : "ram",
+    date  : "02/06/24",
+    customerName  : "ram",
+    isActive  : "tru",
+    totalAmount : 1016,
+    totalAmount : 0,
+    balanceAmount : 0,
+    
+    billingItems:[
+        {
+            businessID : "1",
+            billNumber  : "1",
+            itemName : "totamo"
+            itemPrince : 20,
+            date  : "02/06/24",
+            isActive  : "tru",
+            id:1,
+            qut:5
+            totamlAmount : 100
+        },
+        {
+            businessID : "1",
+            billNumber  : "1",
+            itemName : "totamo"
+            itemPrince : 20,
+            date  : "02/06/24",
+            isActive  : "tru",
+            id:1,
+            qut:5
+            totamlAmount : 100
+        },
+        ]
+   }
