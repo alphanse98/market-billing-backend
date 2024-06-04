@@ -1,3 +1,23 @@
+1st
+check all APIs
+
+2nd :
+get all customer based on businessID
+get all users based on businessID
+get all billing based on businessID
+
+3rd error handling
+
+
+
+
+
+
+
+
+
+
+
 biilings (table)
 businessID 	billNumber 	customerName 	customeID 	date 	isActive	totalAmount	paidAmount	balanceAmount
 
@@ -45,3 +65,6 @@ billNumber 	businessID 	itemName	itemPrice	isActive	createDate	id	qut	totalAmoun
         },
         ]
    }
+
+
+

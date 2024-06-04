@@ -6,10 +6,12 @@ import java.util.List;
 
 public interface ItemService {
 
-    List<Item> getAllItems();
+    List<Item> getAllItemsBybusinessID(String businessID);
     Item createItem(Item item);
     void deleteItems();
     Item findByItemId(Long id);
     Item updateItem(Item item);
     List<Item> createItems(List<Item> item);
+
+
 }

@@ -3,6 +3,8 @@ package com.example.billingbackend.repository;
 import com.example.billingbackend.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ItemRepository extends JpaRepository<Item,Long> {
+import java.util.List;
 
+public interface ItemRepository extends JpaRepository<Item,Long> {
+    List<Item> findByBusinessID(String businessID);
 }
