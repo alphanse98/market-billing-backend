@@ -1,6 +1,6 @@
 package com.example.billingbackend.service.Impl;
 
-import com.example.billingbackend.entity.BillingTable;
+import com.example.billingbackend.entity.BillingEntity;
 import com.example.billingbackend.repository.BillingRepository;
 import com.example.billingbackend.service.BillingService;
 import lombok.AllArgsConstructor;
@@ -17,20 +17,20 @@ public class BillingServiceImpl implements BillingService {
     @Autowired
     public BillingRepository billingRepository;
     @Override
-    public BillingTable createBilling(BillingTable billingTable) {
-        BillingTable billingTable1=billingRepository.save(billingTable);
+    public BillingEntity createBilling(BillingEntity billingTable) {
+        BillingEntity billingTable1=billingRepository.save(billingTable);
         return billingTable1;
     }
 
     @Override
-    public List<BillingTable> getAllBillings() {
+    public List<BillingEntity> getAllBillings() {
 
         return billingRepository.findAll();
     }
 
     @Override
-    public BillingTable updateBilling(BillingTable billingTable) {
-        BillingTable billing=billingRepository.save(billingTable);
+    public BillingEntity updateBilling(BillingEntity billingTable) {
+        BillingEntity billing=billingRepository.save(billingTable);
         return billing;
     }
 

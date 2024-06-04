@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "billingtable")
-public class BillingTable {
+public class BillingEntity {
     @Id
     @Column(nullable = false)
     public String customerID;

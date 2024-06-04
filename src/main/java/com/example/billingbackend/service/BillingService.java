@@ -1,13 +1,13 @@
 package com.example.billingbackend.service;
 
-import com.example.billingbackend.entity.BillingTable;
+import com.example.billingbackend.entity.BillingEntity;
 
 import java.util.List;
 
 public interface BillingService {
 
-    BillingTable createBilling(BillingTable billingTable);
-    List<BillingTable> getAllBillings();
+    BillingEntity createBilling(BillingEntity billingTable);
+    List<BillingEntity> getAllBillings();
 
-    BillingTable updateBilling(BillingTable billingTable);
+    BillingEntity updateBilling(BillingEntity billingTable);
 }

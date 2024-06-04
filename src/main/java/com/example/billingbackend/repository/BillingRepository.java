@@ -1,7 +1,7 @@
 package com.example.billingbackend.repository;
 
-import com.example.billingbackend.entity.BillingTable;
+import com.example.billingbackend.entity.BillingEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BillingRepository extends JpaRepository<BillingTable,String> {
+public interface BillingRepository extends JpaRepository<BillingEntity,String> {
 }

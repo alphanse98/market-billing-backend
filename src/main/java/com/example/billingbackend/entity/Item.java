@@ -21,7 +21,7 @@ public class Item {
     private Long id;
 
     @Column(nullable = false)
-    private Long businessID;
+    private String businessID;
 
     @Column(nullable = false)
     private String itemName;

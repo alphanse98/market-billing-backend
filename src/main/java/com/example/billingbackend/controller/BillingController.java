@@ -1,6 +1,6 @@
 package com.example.billingbackend.controller;
 
-import com.example.billingbackend.entity.BillingTable;
+import com.example.billingbackend.entity.BillingEntity;
 import com.example.billingbackend.service.BillingService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,21 +17,21 @@ public class BillingController {
     private BillingService billingService;
 
     @PostMapping("create")
-    public ResponseEntity<BillingTable> createBilling(@RequestBody BillingTable billingTable){
-        BillingTable billingTable1=billingService.createBilling(billingTable);
+    public ResponseEntity<BillingEntity> createBilling(@RequestBody BillingEntity billingTable){
+        BillingEntity billingTable1=billingService.createBilling(billingTable);
         return new ResponseEntity<>(billingTable1, HttpStatus.CREATED);
     }
 
 
     @GetMapping("get")
-    public ResponseEntity<List<BillingTable>> getAllBillings(){
-        List<BillingTable> billingTables=billingService.getAllBillings();
+    public ResponseEntity<List<BillingEntity>> getAllBillings(){
+        List<BillingEntity> billingTables=billingService.getAllBillings();
         return new ResponseEntity<>(billingTables,HttpStatus.OK);
     }
 
     @PutMapping("update")
-    public ResponseEntity<BillingTable> updateBilling(@RequestBody BillingTable billingTable){
-        BillingTable updatebilling=billingService.updateBilling(billingTable);
+    public ResponseEntity<BillingEntity> updateBilling(@RequestBody BillingEntity billingTable){
+        BillingEntity updatebilling=billingService.updateBilling(billingTable);
         return new ResponseEntity<>(updatebilling,HttpStatus.OK);
     }
 

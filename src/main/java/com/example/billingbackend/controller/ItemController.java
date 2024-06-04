@@ -1,12 +1,15 @@
 package com.example.billingbackend.controller;
 
 import com.example.billingbackend.entity.Item;
+import com.example.billingbackend.entity.UserEntity;
 import com.example.billingbackend.service.ItemService;
+import com.example.billingbackend.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -14,6 +17,7 @@ import java.util.List;
 @RequestMapping("api/item/")
 public class ItemController {
     private ItemService itemService;
+    private UserService userService;
     @PostMapping("create")
     public ResponseEntity<Item> createItem(@RequestBody Item item){
         Item savedItem = itemService.createItem(item);
@@ -26,8 +30,10 @@ public class ItemController {
     }
 
     @GetMapping("get")
-    public ResponseEntity<List<Item>> getAllItems(){
-        List<Item> savedItems = itemService.getAllItems();
+    public ResponseEntity<List<Item>> getAllItems(Principal principal){
+        String businessID = userService.findByUserName(principal.getName()).getBusinessID();
+        System.out.println("<<<<<<<<<<<<<<<< username = " + businessID);
+        List<Item> savedItems = itemService.getAllItemsBybusinessID(businessID);
         return ResponseEntity.ok().body(savedItems);
     }
 
