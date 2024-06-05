@@ -37,10 +37,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerEntity deleteCustomers(CustomerEntity customer1, Long id) {
+    public CustomerEntity deleteCustomers(CustomerEntity customer, Long id) {
         CustomerEntity customerfind = CustomerRepository.findById(id).get();
-        if(customer1.isActive() == true){
-            customer1.setActive(false);
+        if(customer.isActive() == true){
+            customer.setActive(false);
         }
         CustomerRepository.save(customerfind);
         return customerfind;

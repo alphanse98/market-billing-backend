@@ -13,8 +13,8 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     private ItemRepository itemRepository;
     @Override
-    public List<Item> getAllItems() {
-        return itemRepository.findAll();
+    public List<Item> getAllItemsBybusinessID(String businessID) {
+        return itemRepository.findByBusinessID(businessID);
     }
 
     @Override

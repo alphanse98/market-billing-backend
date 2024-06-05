@@ -15,4 +15,6 @@ public interface UserService {
 
     void deleteUsers(Long id);
 
+    UserEntity findByUserName(String UserName);
+
 }
