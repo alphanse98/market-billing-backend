@@ -8,7 +8,9 @@ get all billing based on businessID
 
 3rd error handling
 
-
+item get api
+item price - double type suppose we give string we want handle the exception
+suppose we miss one column entity it shows error we want to handle
 
 
 
