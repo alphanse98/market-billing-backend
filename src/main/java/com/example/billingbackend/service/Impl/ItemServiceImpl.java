@@ -37,6 +37,7 @@ public class ItemServiceImpl implements ItemService {
     public Item updateItem(Item item) {
         Long id=item.getId();
         Item itemfinded = itemRepository.findById(id).get();
+
         itemfinded.setBusinessID(item.getBusinessID());
         itemfinded.setItemName(item.getItemName());
         itemfinded.setItemImg(item.getItemImg());
