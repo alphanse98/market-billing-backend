@@ -25,9 +25,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void deleteItems() {
-        itemRepository.deleteAll();
-
+    public void deleteItems(Item item) {
+        itemRepository.deleteItem(false,item.getId(), item.getBusinessID());
     }
 
     @Override

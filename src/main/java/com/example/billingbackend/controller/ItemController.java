@@ -38,9 +38,9 @@ public class ItemController {
     }
 
     @DeleteMapping("delete")
-    public ResponseEntity<String> deleteItems(){
-        itemService.deleteItems();
-        return new ResponseEntity<>("deleted successfully:",HttpStatus.NO_CONTENT);
+    public ResponseEntity<String> deleteItems(@RequestBody Item item){
+        itemService.deleteItems(item);
+        return new ResponseEntity<>("deleted successfully:",HttpStatus.OK);
     }
 
     @GetMapping("get/{id}")

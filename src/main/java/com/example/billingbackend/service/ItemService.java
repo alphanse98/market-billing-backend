@@ -8,7 +8,7 @@ public interface ItemService {
 
     List<Item> getAllItemsBybusinessID(String businessID);
     Item createItem(Item item);
-    void deleteItems();
+    void deleteItems(Item item);
     Item findByItemId(Long id);
     Item updateItem(Item item);
 
