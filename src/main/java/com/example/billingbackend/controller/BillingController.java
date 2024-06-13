@@ -35,8 +35,4 @@ public class BillingController {
         return new ResponseEntity<>(updatebilling,HttpStatus.OK);
     }
 
-
-
-
-
 }

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class GlobalException extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(InvalidPriceException.class)
-    public ResponseEntity<ErrorDetails> handleInvalidPriceException(InvalidPriceException exception, WebRequest webRequest) {
+    public ResponseEntity<ErrorDetails> handleInvalidPriceException(InvalidPriceException exception, WebRequest webRequest ) {
         ErrorDetails errorDetails=new ErrorDetails(
                 LocalDateTime.now(),
                 exception.getMessage(),

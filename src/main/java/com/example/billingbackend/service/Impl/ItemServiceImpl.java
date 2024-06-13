@@ -7,11 +7,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class ItemServiceImpl implements ItemService {
     private ItemRepository itemRepository;
+
     @Override
     public List<Item> getAllItemsBybusinessID(String businessID) {
         return itemRepository.findByBusinessID(businessID);
@@ -35,7 +37,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item updateItem(Item item) {
-        Long id=item.getId();
+        Long id = item.getId();
         Item itemfinded = itemRepository.findById(id).get();
 
         itemfinded.setBusinessID(item.getBusinessID());
@@ -47,6 +49,22 @@ public class ItemServiceImpl implements ItemService {
 
         itemRepository.save(itemfinded);
         return itemfinded;
+    }
+
+    @Override
+    public Item updateItembyBusinessID(Item item) {
+
+        itemRepository.updateItemByBusinessIDAndId(
+                item.getItemName(),
+                item.getItemImg(),
+                item.isActive(),
+                item.getCreateDate(),
+                item.getItemPrice(),
+                item.getId(),
+                item.getBusinessID()
+        );
+
+        return item;
     }
 
     @Override

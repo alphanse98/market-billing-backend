@@ -11,6 +11,9 @@ public interface ItemService {
     void deleteItems();
     Item findByItemId(Long id);
     Item updateItem(Item item);
+
+    Item updateItembyBusinessID(Item item);
+
     List<Item> createItems(List<Item> item);
 
 

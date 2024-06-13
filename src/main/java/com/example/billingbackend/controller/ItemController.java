@@ -51,7 +51,7 @@ public class ItemController {
 
     @PutMapping("update")
     public ResponseEntity<Item> userUpdate(@RequestBody Item item){
-        Item itemUpdated = itemService.updateItem(item);
+        Item itemUpdated = itemService.updateItembyBusinessID(item);
         return ResponseEntity.ok().body(itemUpdated);
     }
 }
