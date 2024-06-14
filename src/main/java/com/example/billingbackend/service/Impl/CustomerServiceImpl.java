@@ -13,37 +13,54 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
-    CustomerRepository CustomerRepository;
+    CustomerRepository customerRepository;
     @Override
     public void createCustomer(CustomerEntity request) {
-        CustomerRepository.save(request);
+        customerRepository.save(request);
     }
 
     @Override
-    public List<CustomerEntity> getAllCustomers() {
-        return CustomerRepository.findAll();
+    public List<CustomerEntity> getAllCustomers(String businessID) {
+        return customerRepository.findAll(businessID);
     }
 
     @Override
     public CustomerEntity findByCustomerId(Long id) {
-        return CustomerRepository.findById(id).get();
+        return customerRepository.findById(id).get();
     }
 
     @Override
     public CustomerEntity updateCustomer(CustomerEntity customer) {
         CustomerEntity customerResponse;
-        customerResponse = CustomerRepository.save(customer);
+        customerResponse = customerRepository.save(customer);
         return customerResponse;
     }
 
     @Override
     public CustomerEntity deleteCustomers(CustomerEntity customer, Long id) {
-        CustomerEntity customerfind = CustomerRepository.findById(id).get();
+        CustomerEntity customerfind = customerRepository.findById(id).get();
         if(customer.isActive() ){
             customer.setActive(false);
-            CustomerRepository.save(customer);
+            customerRepository.save(customer);
         }
-        return CustomerRepository.save(customerfind);
+        return customerRepository.save(customerfind);
+    }
+
+    @Override
+    public CustomerEntity updateCustomerByBusinessID(CustomerEntity customerEntity) {
+        customerRepository.updateCustomerByBusinessIDAndId(
+                customerEntity.getCustomersName(),
+                customerEntity.getMobile(),
+                customerEntity.getAddress(),
+                customerEntity.getSecMobile(),
+                customerEntity.getEmail(),
+                customerEntity.isActive(),
+                customerEntity.getCreateDate(),
+                customerEntity.getId(),
+                customerEntity.getBusinessId()
+
+        );
+        return customerEntity;
     }
 
 

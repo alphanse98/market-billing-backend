@@ -20,9 +20,12 @@ public class CustomerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     @Column(nullable = false)
     private String businessId;
 
+    @NotEmpty
+    @Size(max = 45, message = "item name should have atmost 45 characters")
     @Column(nullable = false)
     private String customersName;
 
@@ -42,9 +45,11 @@ public class CustomerEntity {
     @Column(nullable = true)
     private String email;
 
+    @NotEmpty
     @Column(nullable = false)
     private boolean isActive;
 
+    @NotEmpty
     @Column(nullable = false)
     private String createDate;
 }

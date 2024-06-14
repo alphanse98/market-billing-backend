@@ -17,11 +17,11 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     @Modifying
     @Transactional
     @Query("UPDATE Item i SET i.itemName = :itemName, i.itemImg = :itemImg, i.isActive = :isActive, i.createDate = :createDate, i.itemPrice = :itemPrice WHERE i.id = :id AND i.businessID = :businessID")
-    int updateItemByBusinessIDAndId(@Param("itemName") String itemName, @Param("itemImg") String itemImg, @Param("isActive") boolean isActive, @Param("createDate") Date createDate, @Param("itemPrice") Double itemPrice, @Param("id") Long id, @Param("businessID") String businessID);
+    void updateItemByBusinessIDAndId(@Param("itemName") String itemName, @Param("itemImg") String itemImg, @Param("isActive") boolean isActive, @Param("createDate") Date createDate, @Param("itemPrice") Double itemPrice, @Param("id") Long id, @Param("businessID") String businessID);
 
 
     @Modifying
     @Transactional
     @Query("UPDATE Item i SET  i.isActive = :isActive  WHERE i.id = :id AND i.businessID = :businessID")
-    int deleteItem(@Param("isActive") Boolean isActive,@Param("id") Long id, @Param("businessID") String businessID );
+    void deleteItem(@Param("isActive") Boolean isActive,@Param("id") Long id, @Param("businessID") String businessID );
 }
