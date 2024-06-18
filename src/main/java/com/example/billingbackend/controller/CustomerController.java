@@ -20,16 +20,17 @@ public class CustomerController {
     private UserService userService;
     @PostMapping("create")
     public ResponseEntity<String> createCustomer(@RequestBody CustomerEntity customer){
-         customerService.createCustomer(customer);
+        System.out.println(">>> customer >> "+ customer);
+     customerService.createCustomer(customer);
         return new ResponseEntity<>("Successfully Created", HttpStatus.CREATED);
     }
 
     @GetMapping("get")
     public ResponseEntity<List<CustomerEntity>> getAllCustomers(Principal principal){
-        String businessID=userService.findByUserName(principal.getName()).getBusinessID();
+        String businessId =userService.findByUserName(principal.getName()).getBusinessID();
 //        System.out.println("<<<<<<<<<<<<<<<< username = " + businessID);
-        List<CustomerEntity> customerEntities=customerService.getAllCustomers(businessID);
-        return new ResponseEntity<>(customerEntities,HttpStatus.OK);
+        List<CustomerEntity> customerList = customerService.getAllCustomers(businessId);
+        return new ResponseEntity<>(customerList,HttpStatus.OK);
     }
 
 
@@ -41,8 +42,8 @@ public class CustomerController {
 
     @PutMapping("update")
     public ResponseEntity<CustomerEntity> customerUpdate(@RequestBody CustomerEntity customer){
-        CustomerEntity customerupdated=customerService.updateCustomerByBusinessID(customer);
-        return new ResponseEntity<>(customerupdated,HttpStatus.OK);
+        CustomerEntity updated  = customerService.updateCustomerByBusinessID(customer);
+        return new ResponseEntity<>(updated ,HttpStatus.OK);
     }
 
 

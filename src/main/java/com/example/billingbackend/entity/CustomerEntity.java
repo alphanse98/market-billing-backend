@@ -1,5 +1,6 @@
 package com.example.billingbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
@@ -8,6 +9,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,19 +21,17 @@ import lombok.NoArgsConstructor;
 public class CustomerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty
     @Column(nullable = false)
-    private String businessId;
+    private String businessID;
 
     @NotEmpty
     @Size(max = 45, message = "item name should have atmost 45 characters")
     @Column(nullable = false)
     private String customersName;
 
-    @NotEmpty
 //    @Digits(integer = 10, fraction = 0, message = "number should have at least 10 digits")
     @Column(nullable = false)
     private Long mobile;
@@ -45,11 +47,10 @@ public class CustomerEntity {
     @Column(nullable = true)
     private String email;
 
-    @NotEmpty
     @Column(nullable = false)
     private boolean isActive;
 
-    @NotEmpty
-    @Column(nullable = false)
-    private String createDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime createDate;
 }

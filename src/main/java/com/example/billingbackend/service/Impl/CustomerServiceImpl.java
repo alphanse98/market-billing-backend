@@ -21,7 +21,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerEntity> getAllCustomers(String businessID) {
-        return customerRepository.findAll(businessID);
+
+        return customerRepository.findByBusinessID(businessID);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
                 customerEntity.isActive(),
                 customerEntity.getCreateDate(),
                 customerEntity.getId(),
-                customerEntity.getBusinessId()
+                customerEntity.getBusinessID()
 
         );
         return customerEntity;
