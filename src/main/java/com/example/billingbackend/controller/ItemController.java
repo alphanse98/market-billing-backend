@@ -10,16 +10,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin("*")
 @RequestMapping("api/item/")
 public class ItemController {
     private ItemService itemService;
     private UserService userService;
     @PostMapping("create")
     public ResponseEntity<Item> createItem(@RequestBody Item item){
+        System.out.println("<<<<<<<<<< item  > " + item);
+//        item.setCreateDate(new Date());
         Item savedItem = itemService.createItem(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
@@ -49,9 +53,9 @@ public class ItemController {
         return ResponseEntity.ok().body(item);
     }
 
-    @PutMapping("update")
-    public ResponseEntity<Item> userUpdate(@RequestBody Item item){
-        Item itemUpdated = itemService.updateItembyBusinessID(item);
-        return ResponseEntity.ok().body(itemUpdated);
-    }
+//    @PutMapping("update")
+//    public ResponseEntity<Item> userUpdate(@RequestBody Item item){
+//        Item itemUpdated = itemService.updateItembyBusinessID(item);
+//        return ResponseEntity.ok().body(itemUpdated);
+//    }
 }

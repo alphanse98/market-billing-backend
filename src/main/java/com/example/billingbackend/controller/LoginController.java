@@ -12,13 +12,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin("*")
 public class LoginController {
 
      JwtUtil JwtUtil;
@@ -27,7 +25,7 @@ public class LoginController {
      AccountService AccountService;
      UsersRepository usersRepository;
 
-    @GetMapping("api/login")
+    @PostMapping("api/login")
     public ResponseEntity<LoginDto> jwt (@RequestBody LoginEntity requestData){
 
         String userName = requestData.getUsername();

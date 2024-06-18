@@ -43,25 +43,26 @@ public class ItemServiceImpl implements ItemService {
         itemfinded.setItemName(item.getItemName());
         itemfinded.setItemImg(item.getItemImg());
         itemfinded.setItemPrice(item.getItemPrice());
-        itemfinded.setCreateDate(item.getCreateDate());
+//        itemfinded.setCreateDate(item.getCreateDate());
 
 
         itemRepository.save(itemfinded);
         return itemfinded;
+//        return item;
     }
 
     @Override
     public Item updateItembyBusinessID(Item item) {
 
-        itemRepository.updateItemByBusinessIDAndId(
-                item.getItemName(),
-                item.getItemImg(),
-                item.isActive(),
-                item.getCreateDate(),
-                item.getItemPrice(),
-                item.getId(),
-                item.getBusinessID()
-        );
+//        itemRepository.updateItemByBusinessIDAndId(
+//                item.getItemName(),
+//                item.getItemImg(),
+//                item.isActive(),
+////                item.getCreateDate(),
+//                item.getItemPrice(),
+//                item.getId(),
+//                item.getBusinessID()
+//        );
 
         return item;
     }

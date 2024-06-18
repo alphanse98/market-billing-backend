@@ -1,13 +1,16 @@
 package com.example.billingbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+//import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,16 +38,24 @@ public class Item {
     @Column(nullable = false)
     private String itemImg;
 
-    @NotEmpty
+
     @Column(nullable = false)
     private Double itemPrice;
 
-    @NotEmpty
+
     private boolean isActive;
 
-    @NotEmpty
-    @Column(nullable = true) // Setting nullable to true makes the column optional
-    private Date createDate;
+//    @NotEmpty
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(nullable = true) // Setting nullable to true makes the column optional
+
+//   @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+//   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSSZ", shape = JsonFormat.Shape.STRING)
+
+   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
+   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime createDate;
+
 }
 
 
