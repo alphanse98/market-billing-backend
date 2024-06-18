@@ -2,11 +2,13 @@ package com.example.billingbackend.controller;
 
 import com.example.billingbackend.entity.CustomerEntity;
 import com.example.billingbackend.service.CustomerService;
+import com.example.billingbackend.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -15,6 +17,7 @@ import java.util.List;
 public class CustomerController {
 
     private CustomerService customerService;
+    private UserService userService;
     @PostMapping("create")
     public ResponseEntity<String> createCustomer(@RequestBody CustomerEntity customer){
          customerService.createCustomer(customer);
@@ -22,8 +25,10 @@ public class CustomerController {
     }
 
     @GetMapping("get")
-    public ResponseEntity<List<CustomerEntity>> getAllCustomers(){
-        List<CustomerEntity> customerEntities=customerService.getAllCustomers();
+    public ResponseEntity<List<CustomerEntity>> getAllCustomers(Principal principal){
+        String businessID=userService.findByUserName(principal.getName()).getBusinessID();
+//        System.out.println("<<<<<<<<<<<<<<<< username = " + businessID);
+        List<CustomerEntity> customerEntities=customerService.getAllCustomers(businessID);
         return new ResponseEntity<>(customerEntities,HttpStatus.OK);
     }
 
@@ -36,7 +41,7 @@ public class CustomerController {
 
     @PutMapping("update")
     public ResponseEntity<CustomerEntity> customerUpdate(@RequestBody CustomerEntity customer){
-        CustomerEntity customerupdated=customerService.updateCustomer(customer);
+        CustomerEntity customerupdated=customerService.updateCustomerByBusinessID(customer);
         return new ResponseEntity<>(customerupdated,HttpStatus.OK);
     }
 

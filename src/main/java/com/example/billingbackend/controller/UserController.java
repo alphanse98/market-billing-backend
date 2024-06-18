@@ -20,7 +20,6 @@ public class UserController  {
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity userEntity){
         UserEntity userEntity1=userService.createUser(userEntity);
         return new ResponseEntity<>(userEntity1, HttpStatus.CREATED);
-
     }
 
     @GetMapping("get")
