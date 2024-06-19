@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity createUser(UserEntity userEntity) {
-        UserEntity userEntity1=UsersRepository.save(userEntity);
-        return userEntity1;
+        userEntity.setPassword(PasswordEncoder.encode(userEntity.getPassword())); // encode pass
+        return UsersRepository.save(userEntity);
     }
 
     @Override
@@ -54,6 +54,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity updateUserByBusinessID(UserEntity userEntity) {
+
+        userEntity.setPassword(PasswordEncoder.encode(userEntity.getPassword())); // encode pass
+
         UsersRepository.updateUserByBusinessIDandId(
                 userEntity.getRole(),
                 userEntity.getUsername(),

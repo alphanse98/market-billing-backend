@@ -1,42 +1,25 @@
-1st
-check all APIs
-
-2nd :
-get all customer based on businessID
-get all users based on businessID
-get all billing based on businessID
-
-3rd error handling
-
-item get api
-item price - double type suppose we give string we want handle the exception
-suppose we miss one column entity it shows error we want to handle
-
-4th
-validation
-billingitemcontroller
-
-5th
-validation
-update and delete api in customer controller
 
 
-         ''              billing  controller
-        update           user     controller
+
+check billing apis
+create api  list billingItems
+
+usernameCheck api
+tips
+=> user table => username => ture or false
 
 
 
 
-biilings (table)
-businessID 	billNumber 	customerName 	customeID 	date 	isActive	totalAmount	paidAmount	balanceAmount
-
-
-billingItems (table)
-billNumber 	businessID 	itemName	itemPrice	isActive	createDate	id	qut	totalAmount
 
 
 
 
+
+
+
+
+user delete api
 {
     businessID : "1",
     billNumber  : "1",

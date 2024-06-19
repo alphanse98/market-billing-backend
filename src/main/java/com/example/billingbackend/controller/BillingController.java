@@ -21,21 +21,20 @@ public class BillingController {
 
     @PostMapping("create")
     public ResponseEntity<BillingEntity> createBilling(@RequestBody BillingEntity billingTable){
-        BillingEntity billingTable1=billingService.createBilling(billingTable);
+        BillingEntity billingTable1 = billingService.createBilling(billingTable);
         return new ResponseEntity<>(billingTable1, HttpStatus.CREATED);
     }
 
-
     @GetMapping("get")
     public ResponseEntity<List<BillingEntity>> getAllBillings(Principal principal){
-        String businessID=userService.findByUserName(principal.getName()).getBusinessID();
-        List<BillingEntity> billingTables=billingService.getAllBillings(businessID);
+        String businessID = userService.findByUserName(principal.getName()).getBusinessID();
+        List<BillingEntity> billingTables = billingService.getAllBillings(businessID);
         return new ResponseEntity<>(billingTables,HttpStatus.OK);
     }
 
     @PutMapping("update")
     public ResponseEntity<BillingEntity> updateBilling(@RequestBody BillingEntity billingTable){
-        BillingEntity updatebilling=billingService.updateBillingByBusinessID(billingTable);
+        BillingEntity updatebilling = billingService.updateBillingByBusinessID(billingTable);
         return new ResponseEntity<>(updatebilling,HttpStatus.OK);
     }
 
