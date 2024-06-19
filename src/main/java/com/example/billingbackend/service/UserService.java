@@ -9,12 +9,16 @@ public interface UserService {
     void userRegister (UserEntity request);
 
     UserEntity createUser(UserEntity userEntity);
-    List<UserEntity> getAllUsers();
+    List<UserEntity> getAllUsers(String businessID);
 
     UserEntity updateUser(UserEntity userEntity);
 
     void deleteUsers(Long id);
 
     UserEntity findByUserName(String UserName);
+
+    UserEntity updateUserByBusinessID(UserEntity userEntity);
+
+
 
 }

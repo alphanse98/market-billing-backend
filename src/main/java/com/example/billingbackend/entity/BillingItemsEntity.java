@@ -33,23 +33,18 @@ public class BillingItemsEntity {
     @Column(nullable = false)
     private Long itemPrice;
 
-    @NotEmpty
     @Column(nullable = false)
     private boolean isActive;
 
-    @NotEmpty
     @Column(nullable = false)
     private String createDate;
 
-    @NotEmpty
     @Column(nullable = false)
     private Long id;
 
-    @NotEmpty
     @Column(nullable = false)
     private Long quantity;
 
-    @NotEmpty
     @Column(nullable = false)
     private Long totalAmount;
 

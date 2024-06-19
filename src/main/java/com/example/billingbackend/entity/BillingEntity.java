@@ -16,7 +16,10 @@ import lombok.NoArgsConstructor;
 public class BillingEntity {
     @Id
     @Column(nullable = false)
-    public String customerID;
+    public Long id;
+
+    @Column(nullable = false)
+    public Long customerID;
 
     @NotEmpty
     @Column(nullable = false)
@@ -31,23 +34,19 @@ public class BillingEntity {
     @Column(nullable = false)
     public String customerName;
 
-    @NotEmpty
     @Column(nullable = false)
     public String date;
 
-    @NotEmpty
     @Column(nullable = false)
     public boolean isActive;
 
-    @NotEmpty
+
     @Column(nullable = false)
     public Long totalAmount;
 
-    @NotEmpty
     @Column(nullable = false)
     public Long paidAmount;
 
-    @NotEmpty
     @Column(nullable = false)
     public Long balanceAmount;
 
