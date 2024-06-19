@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> getAllUsers() {
-        return UsersRepository.findAll();
+    public List<UserEntity> getAllUsers(String businessID) {
+        return UsersRepository.findByBusinessID(businessID);
     }
 
     @Override
@@ -50,6 +50,18 @@ public class UserServiceImpl implements UserService {
     public UserEntity findByUserName(String UserName) {
         return UsersRepository.findByUsername(UserName).get();
 
+    }
+
+    @Override
+    public UserEntity updateUserByBusinessID(UserEntity userEntity) {
+        UsersRepository.updateUserByBusinessIDandId(
+                userEntity.getRole(),
+                userEntity.getUsername(),
+                userEntity.getPassword(),
+                userEntity.getId(),
+                userEntity.getBusinessID()
+        );
+        return userEntity;
     }
 
 

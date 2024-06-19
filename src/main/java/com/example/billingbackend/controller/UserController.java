@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -23,14 +24,15 @@ public class UserController  {
     }
 
     @GetMapping("get")
-    public ResponseEntity<List<UserEntity>> getAllUsers(){
-         List<UserEntity> userEntities=userService.getAllUsers();
+    public ResponseEntity<List<UserEntity>> getAllUsers(Principal principal){
+         String businessID=userService.findByUserName(principal.getName()).getBusinessID();
+         List<UserEntity> userEntities=userService.getAllUsers(businessID);
          return new ResponseEntity<>(userEntities,HttpStatus.OK);
     }
 
     @PutMapping("update")
     public ResponseEntity<UserEntity> updateUser(@RequestBody UserEntity userEntity){
-        UserEntity userupdated=userService.updateUser(userEntity);
+        UserEntity userupdated=userService.updateUserByBusinessID(userEntity);
         return new ResponseEntity<>(userupdated,HttpStatus.OK);
     }
 

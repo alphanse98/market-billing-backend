@@ -29,14 +29,14 @@ public class AccountEntity {
     @Column(nullable = false)
     private String businessName;
 
-    @NotEmpty
+
     @Column(nullable = false , unique = true)
     private Long mobile;
 
     @Column(nullable = true , unique = true)
     private Long secMobile;
 
-    @NotEmpty
+
     @Email
     @Column(nullable = true, unique = true)
     private String email;
@@ -45,7 +45,7 @@ public class AccountEntity {
     @Column(nullable = false)
     private String address;
 
-    @NotEmpty
+
     @Column(nullable = false)
     private boolean isActive;
 

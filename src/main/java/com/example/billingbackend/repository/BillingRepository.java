@@ -1,7 +1,21 @@
 package com.example.billingbackend.repository;
 
 import com.example.billingbackend.entity.BillingEntity;
+import com.example.billingbackend.entity.CustomerEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-public interface BillingRepository extends JpaRepository<BillingEntity,String> {
+import java.util.List;
+
+public interface BillingRepository extends JpaRepository<BillingEntity,Long> {
+
+    List<BillingEntity> findByBusinessID(String businessID);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE BillingEntity i SET i.customerID =:customerID, i.billNumber= :billNumber, i.customerName = :customerName, i.date = :date, i.isActive = :isActive, i.totalAmount = :totalAmount, i.paidAmount = :paidAmount, i.balanceAmount= :balanceAmount WHERE i.id = :id AND i.businessID = :businessID")
+    int updateBillingByBusinessIDandId(@Param("customerID") Long customerID, @Param("billNumber") String billNumber, @Param("customerName") String customerName, @Param("date") String date, @Param("isActive") boolean isActive, @Param("totalAmount") Long totalAmount, @Param("paidAmount") Long paidAmount, @Param("balanceAmount") Long balanceAmount,@Param("id") Long id, @Param("businessID") String businessID);
 }
