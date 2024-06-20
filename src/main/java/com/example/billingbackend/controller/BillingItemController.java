@@ -14,11 +14,12 @@ import java.util.List;
 @RestController
 @RequestMapping("api/billingItems/")
 public class BillingItemController {
+
     private BillingItemService billingItemService;
 
     @PostMapping("create")
-    public ResponseEntity<BillingItemsEntity> createbillingitems(@RequestBody BillingItemsEntity billingItemsEntity){
-        BillingItemsEntity billingItemsEntity1=billingItemService.createbillingitems(billingItemsEntity);
+    public ResponseEntity<List<BillingItemsEntity>> createbillingitems(@RequestBody List<BillingItemsEntity> billingItemsEntity){
+        List<BillingItemsEntity> billingItemsEntity1=billingItemService.createbillingitems(billingItemsEntity);
         return new ResponseEntity<>(billingItemsEntity1, HttpStatus.CREATED);
     }
 

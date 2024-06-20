@@ -18,18 +18,19 @@ import lombok.NoArgsConstructor;
 public class BillingItemsEntity {
     @Id
     @Column(nullable = false, unique = true)
-    private String billNumber;
+
+    private Long id;
 
     @NotEmpty
     @Column(nullable = false)
     private String businessID;
 
     @NotEmpty
-    @Size(max = 15, message = "item name should have atmost 15 characters")
+//    @Size(max = 15, message = "item name should have atmost 15 characters")
     @Column(nullable = false)
     private String itemName;
 
-    @NotEmpty
+
     @Column(nullable = false)
     private Long itemPrice;
 
@@ -40,7 +41,7 @@ public class BillingItemsEntity {
     private String createDate;
 
     @Column(nullable = false)
-    private Long id;
+    private Long billingNumber;
 
     @Column(nullable = false)
     private Long quantity;

@@ -17,8 +17,8 @@ public class BillingItemServiceImpl implements BillingItemService {
     @Autowired
     public BillingItemRepository billingItemRepository;
     @Override
-    public BillingItemsEntity createbillingitems(BillingItemsEntity billingItems) {
-        BillingItemsEntity billingItems1=billingItemRepository.save(billingItems);
+    public List<BillingItemsEntity> createbillingitems(List<BillingItemsEntity> billingItems) {
+        List<BillingItemsEntity> billingItems1=billingItemRepository.saveAll(billingItems);
         return billingItems1;
     }
 
