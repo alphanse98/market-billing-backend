@@ -38,6 +38,7 @@ public class BillingServiceImpl implements BillingService {
     @Override
     public BillingEntity updateBillingByBusinessID(BillingEntity billingEntity) {
         billingRepository.updateBillingByBusinessIDandId(
+                billingEntity.getBillingID(),
                 billingEntity.getCustomerID(),
                 billingEntity.getBillNumber(),
                 billingEntity.getCustomerName(),

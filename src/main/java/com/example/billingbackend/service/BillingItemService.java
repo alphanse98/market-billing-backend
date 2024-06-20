@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BillingItemService  {
 
-    BillingItemsEntity createbillingitems(BillingItemsEntity billingItems);
+    List<BillingItemsEntity> createbillingitems(List<BillingItemsEntity> billingItems);
 
     List<BillingItemsEntity> getAllBillingItems();
 
