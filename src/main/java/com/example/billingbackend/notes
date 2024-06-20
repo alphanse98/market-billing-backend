@@ -1,12 +1,17 @@
 
 
 
-check billing apis
-create api  list billingItems
 
+1) task
 usernameCheck api
-tips
-=> user table => username => ture or false
+input
+input username like 1234567890
+
+output
+true or false
+
+2 task
+jwt error
 
 
 

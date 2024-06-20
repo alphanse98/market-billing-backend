@@ -18,8 +18,8 @@ public class BillingItemServiceImpl implements BillingItemService {
     public BillingItemRepository billingItemRepository;
     @Override
     public List<BillingItemsEntity> createbillingitems(List<BillingItemsEntity> billingItems) {
-        List<BillingItemsEntity> billingItems1=billingItemRepository.saveAll(billingItems);
-        return billingItems1;
+//        List<BillingItemsEntity> billingItems1 = billingItemRepository.saveAll(billingItems);
+        return billingItemRepository.saveAll(billingItems);
     }
 
     @Override
