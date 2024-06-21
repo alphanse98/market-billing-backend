@@ -18,7 +18,6 @@ public class BillingItemsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
     @Column(nullable = false)
     private String businessID;
 

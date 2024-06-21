@@ -17,6 +17,8 @@ public interface UserService {
 
     UserEntity findByUserName(String UserName);
 
+    Boolean findByName(String UserName);
+
     UserEntity updateUserByBusinessID(UserEntity userEntity);
 
 

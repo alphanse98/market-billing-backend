@@ -1,5 +1,6 @@
 package com.example.billingbackend.service.Impl;
 
+import com.example.billingbackend.dto.UsernameCheckDto;
 import com.example.billingbackend.entity.UserEntity;
 import com.example.billingbackend.repository.UsersRepository;
 import com.example.billingbackend.service.UserService;
@@ -9,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static org.springframework.util.ClassUtils.isPresent;
 
 @Service
 @AllArgsConstructor
@@ -48,7 +51,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity findByUserName(String UserName) {
+//        if(UsersRepository.findByUsername(UserName).get().equals(UsernameCheckDto usernameCheckDto)){
+//
+//        }
         return UsersRepository.findByUsername(UserName).get();
+    }
+
+    @Override
+    public Boolean findByName(String username) {
+        if(UsersRepository.findByUsername(username).isPresent()) {
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     @Override

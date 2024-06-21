@@ -12,6 +12,7 @@ import java.util.Optional;
 
 public interface UsersRepository extends JpaRepository<UserEntity, Long> {
      Optional <UserEntity> findByUsername(String username);
+
      List<UserEntity> findByBusinessID(String businessID);
      @Modifying
      @Transactional
