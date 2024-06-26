@@ -32,6 +32,7 @@ public class BillingController {
         return new ResponseEntity<>(billingTables,HttpStatus.OK);
     }
 
+
     @PutMapping("update")
     public ResponseEntity<BillingEntity> updateBilling(@RequestBody BillingEntity billingTable){
         BillingEntity updatebilling = billingService.updateBillingByBusinessID(billingTable);

@@ -25,6 +25,18 @@ public class GlobalException extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(JwtTokenInvalidException.class)
+    public ResponseEntity<ErrorDetails> handleJwtTokenInvalidException(InvalidPriceException exception, WebRequest webRequest ) {
+        ErrorDetails errorDetails=new ErrorDetails(
+                LocalDateTime.now(),
+                exception.getMessage(),
+                webRequest.getDescription(false),
+                "Not valid token"
+        );
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> exception(Exception exception,WebRequest webRequest){

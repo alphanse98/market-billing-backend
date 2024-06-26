@@ -1,18 +1,18 @@
 package com.example.billingbackend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
+@Data
 @Entity
-@Table(name = "billingItems")
-public class BillingItemsEntity {
+@Table(name = "billSettings")
+public class BillSettings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,27 +22,26 @@ public class BillingItemsEntity {
     private String businessID;
 
     @NotEmpty
-//    @Size(max = 15, message = "item name should have atmost 15 characters")
     @Column(nullable = false)
-    private String itemName;
+    private String brandName;
 
-
-    @Column(nullable = false)
-    private Long itemPrice;
+    @NotEmpty
+    private String address;
 
     @Column(nullable = false)
-    private boolean isActive;
+    private Long mobile;
+
+    private Long secMobile;
+
+    @NotEmpty
+    @Email
+    @Column(nullable = false)
+    private String email;
 
     @Column(nullable = false)
-    private String createDate;
+    private boolean customerID;
 
     @Column(nullable = false)
-    private Long billingNumber;
-
-    @Column(nullable = false)
-    private Long quantity;
-
-    @Column(nullable = false)
-    private Long totalAmount;
+    private boolean customerName;
 
 }
