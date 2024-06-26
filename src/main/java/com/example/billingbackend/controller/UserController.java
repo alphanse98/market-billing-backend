@@ -1,5 +1,6 @@
 package com.example.billingbackend.controller;
 
+import com.example.billingbackend.dto.UsernameCheckDto;
 import com.example.billingbackend.entity.UserEntity;
 import com.example.billingbackend.service.UserService;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,12 @@ public class UserController  {
          String businessID=userService.findByUserName(principal.getName()).getBusinessID();
          List<UserEntity> userEntities=userService.getAllUsers(businessID);
          return new ResponseEntity<>(userEntities,HttpStatus.OK);
+    }
+
+    @PostMapping("isboolean")
+    public ResponseEntity<Boolean> getBillings(@RequestBody UsernameCheckDto usernameCheckDto){
+        Boolean userName= userService.findByName(usernameCheckDto.getUsername());
+        return new ResponseEntity<>(userName,HttpStatus.OK);
     }
 
     @PutMapping("update")

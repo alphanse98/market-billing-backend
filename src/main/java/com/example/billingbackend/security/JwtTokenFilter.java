@@ -1,8 +1,10 @@
 package com.example.billingbackend.security;
 
 import com.example.billingbackend.entity.UserEntity;
+import com.example.billingbackend.exception.JwtTokenInvalidException;
 import com.example.billingbackend.repository.UsersRepository;
 import com.example.billingbackend.security.JwtUtil;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,9 +45,15 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer")) {    //check token or Bearer
             filterChain.doFilter(request, response);
 //            "Bearer "+token
+//            String token = authorizationHeader.split(" ")[1];     // split the token like remove Bearer
+//            try {
+//                String username = jwtUtil.getUsername(token);  // get username from token
+//            }
+//            catch (ExpiredJwtException e) {
+//                throw new JwtTokenInvalidException("JWT Token has expired");
+//            }
             return;
         }
-
         String token = authorizationHeader.split(" ")[1];     // split the token like remove Bearer
 
         if (!jwtUtil.validate(token)) {                             //if it is not valid return filterChain
@@ -53,7 +61,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             return;
         }
 
-        String username = jwtUtil.getUsername(token);  // get username from token
+        String username = jwtUtil.getUsername(token);          // get username from token
 
 //        System.out.println("username from token >> " + username);
 
