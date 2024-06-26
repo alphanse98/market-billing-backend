@@ -14,6 +14,15 @@ true or false
 jwt error
 
 
+bill settings -get, add, update apis
+brandName - string
+address  - string
+mobile  - Long
+secmobile - Long
+email   - string
+customerId   - boolean
+customerName - boolean
+
 
 
 

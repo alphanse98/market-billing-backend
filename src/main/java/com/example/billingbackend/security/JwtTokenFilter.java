@@ -45,13 +45,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer")) {    //check token or Bearer
             filterChain.doFilter(request, response);
 //            "Bearer "+token
-            String token = authorizationHeader.split(" ")[1];     // split the token like remove Bearer
-            try {
-                String username = jwtUtil.getUsername(token);  // get username from token
-            }
-            catch (ExpiredJwtException e) {
-                throw new JwtTokenInvalidException("JWT Token has expired");
-            }
+//            String token = authorizationHeader.split(" ")[1];     // split the token like remove Bearer
+//            try {
+//                String username = jwtUtil.getUsername(token);  // get username from token
+//            }
+//            catch (ExpiredJwtException e) {
+//                throw new JwtTokenInvalidException("JWT Token has expired");
+//            }
             return;
         }
         String token = authorizationHeader.split(" ")[1];     // split the token like remove Bearer
