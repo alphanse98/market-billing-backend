@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("api/customer/")
+@CrossOrigin("*")
 public class CustomerController {
 
     private CustomerService customerService;
@@ -21,7 +22,7 @@ public class CustomerController {
     @PostMapping("create")
     public ResponseEntity<String> createCustomer(@RequestBody CustomerEntity customer){
         System.out.println(">>> customer >> "+ customer);
-     customerService.createCustomer(customer);
+        customerService.createCustomer(customer);
         return new ResponseEntity<>("Successfully Created", HttpStatus.CREATED);
     }
 

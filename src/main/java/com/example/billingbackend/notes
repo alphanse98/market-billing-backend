@@ -23,6 +23,18 @@ email   - string
 customerId   - boolean
 customerName - boolean
 
+customer balance - create, getAll, update(editable only balanceAmount), delete- isactive(false)
+id - Long
+businessID - string
+customerID - Long
+customerName - string
+mobile - Long
+balanceAmount - Long
+isActive - boolean
+description - string
+createDate - String
+
+
 
 
 
