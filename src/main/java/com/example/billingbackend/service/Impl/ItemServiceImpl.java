@@ -54,15 +54,14 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item updateItembyBusinessID(Item item) {
 
-//        itemRepository.updateItemByBusinessIDAndId(
-//                item.getItemName(),
-//                item.getItemImg(),
-//                item.isActive(),
-////                item.getCreateDate(),
-//                item.getItemPrice(),
-//                item.getId(),
-//                item.getBusinessID()
-//        );
+        itemRepository.updateItemByBusinessIDAndId(
+                item.getItemName(),
+                item.getItemImg(),
+                item.isActive(),
+                item.getItemPrice(),
+                item.getId(),
+                item.getBusinessID()
+        );
 
         return item;
     }

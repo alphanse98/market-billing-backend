@@ -30,7 +30,7 @@ public class Item {
     private String businessID;
 
     @NotEmpty
-    @Size(max = 15, message = "item name should have atmost 15 characters")
+//    @Size(max = 15, message = "item name should have atmost 15 characters")
     @Column(nullable = false)
     private String itemName;
 

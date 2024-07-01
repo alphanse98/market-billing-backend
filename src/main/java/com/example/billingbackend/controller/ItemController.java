@@ -23,7 +23,6 @@ public class ItemController {
     @PostMapping("create")
     public ResponseEntity<Item> createItem(@RequestBody Item item){
         System.out.println("<<<<<<<<<< item  > " + item);
-//        item.setCreateDate(new Date());
         Item savedItem = itemService.createItem(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
@@ -36,7 +35,6 @@ public class ItemController {
     @GetMapping("get")
     public ResponseEntity<List<Item>> getAllItems(Principal principal){
         String businessID = userService.findByUserName(principal.getName()).getBusinessID();
-        System.out.println("<<<<<<<<<<<<<<<< username = " + businessID);
         List<Item> savedItems = itemService.getAllItemsBybusinessID(businessID);
         return ResponseEntity.ok().body(savedItems);
     }
@@ -53,9 +51,9 @@ public class ItemController {
         return ResponseEntity.ok().body(item);
     }
 
-//    @PutMapping("update")
-//    public ResponseEntity<Item> userUpdate(@RequestBody Item item){
-//        Item itemUpdated = itemService.updateItembyBusinessID(item);
-//        return ResponseEntity.ok().body(itemUpdated);
-//    }
+    @PutMapping("update")
+    public ResponseEntity<Item> userUpdate(@RequestBody Item item){
+        Item itemUpdated = itemService.updateItembyBusinessID(item);
+        return ResponseEntity.ok().body(itemUpdated);
+    }
 }
