@@ -1,6 +1,7 @@
 package com.example.billingbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -42,7 +43,8 @@ public class Item {
     @Column(nullable = false)
     private Double itemPrice;
 
-
+    @JsonProperty("isActive")
+    @Column(nullable = false)
     private boolean isActive;
 
 //    @NotEmpty
