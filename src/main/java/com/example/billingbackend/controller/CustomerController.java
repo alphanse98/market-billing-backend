@@ -22,7 +22,7 @@ public class CustomerController {
     @PostMapping("create")
     public ResponseEntity<String> createCustomer(@RequestBody CustomerEntity customer){
         System.out.println(">>> customer >> "+ customer);
-     customerService.createCustomer(customer);
+        customerService.createCustomer(customer);
         return new ResponseEntity<>("Successfully Created", HttpStatus.CREATED);
     }
 
