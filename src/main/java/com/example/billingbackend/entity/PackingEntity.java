@@ -29,7 +29,7 @@ public class PackingEntity {
     private String packingName;
 
     @Column(nullable = false)
-    private Double packingPrice;
+        private Double packingPrice;
 
     @JsonProperty("isActive")
     @Column(nullable = false)

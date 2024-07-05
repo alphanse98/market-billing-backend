@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("api/packing/")
+@CrossOrigin("*")
 public class PackingController {
 
     @Autowired
@@ -44,7 +45,7 @@ public class PackingController {
     }
 
 
-    @DeleteMapping("delete")
+    @PostMapping("delete")
     public ResponseEntity<String> deletePacking(@RequestBody PackingEntity packingEntity){
         System.out.println(">>>>>>>>>>>>>>" + packingEntity);
         packingService.deletePackings(packingEntity);

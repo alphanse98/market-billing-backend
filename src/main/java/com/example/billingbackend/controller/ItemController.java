@@ -39,7 +39,8 @@ public class ItemController {
         return ResponseEntity.ok().body(savedItems);
     }
 
-    @DeleteMapping("delete")
+//    @DeleteMapping("delete")
+    @PostMapping("delete")
     public ResponseEntity<String> deleteItems(@RequestBody Item item){
         itemService.deleteItems(item);
         return new ResponseEntity<>("deleted successfully:",HttpStatus.OK);
