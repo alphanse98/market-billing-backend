@@ -19,5 +19,8 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity,Long> {
     @Query("UPDATE CustomerEntity i SET i.customersName = :customersName, i.mobile = :mobile, i.address = :address, i.secMobile = :secMobile, i.email = :email, i.isActive = :isActive, i.createDate = :createDate WHERE i.id = :id AND i.businessID = :businessID")
     void updateCustomerByBusinessIDAndId(@Param("customersName") String customersName, @Param("mobile") Long mobile, @Param("address") String address, @Param("secMobile") Long secMobile, @Param("email") String email, @Param("isActive") boolean isActive, @Param("createDate") LocalDateTime createDate, @Param("id") Long id, @Param("businessID") String businessID);
 
-
+    @Modifying
+    @Transactional
+    @Query("UPDATE CustomerEntity i SET  i.isActive = :isActive  WHERE i.id = :id AND i.businessID = :businessID")
+    void deleteCustomer(@Param("isActive") Boolean isActive,@Param("id") Long id, @Param("businessID") String businessID );
 }

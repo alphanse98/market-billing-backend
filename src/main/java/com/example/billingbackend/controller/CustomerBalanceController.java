@@ -41,7 +41,7 @@ public class CustomerBalanceController {
         return new ResponseEntity<>(updatedCustomerBalance,HttpStatus.OK);
     }
 
-    @DeleteMapping("delete")
+    @PostMapping("delete")
     public ResponseEntity<String> deleteCustomerBalance(@RequestBody CustomerBalanceEntity customerBalanceEntity){
         customerBalanceService.deleteCustomerBalance(customerBalanceEntity);
         return new ResponseEntity<>("deleted successfully",HttpStatus.OK);
