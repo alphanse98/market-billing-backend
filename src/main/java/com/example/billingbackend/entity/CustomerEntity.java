@@ -1,6 +1,7 @@
 package com.example.billingbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
@@ -46,6 +47,7 @@ public class CustomerEntity {
     @Column(nullable = true)
     private String email;
 
+    @JsonProperty("isActive")
     @Column(nullable = false)
     private boolean isActive;
 

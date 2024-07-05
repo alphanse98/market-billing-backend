@@ -1,5 +1,6 @@
 package com.example.billingbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -25,7 +26,6 @@ public class BillingItemsEntity {
 //    @Size(max = 15, message = "item name should have atmost 15 characters")
     @Column(nullable = false)
     private String itemName;
-
 
     @Column(nullable = false)
     private Long itemPrice;

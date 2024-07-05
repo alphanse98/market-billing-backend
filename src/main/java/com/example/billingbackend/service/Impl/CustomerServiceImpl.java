@@ -1,6 +1,7 @@
 package com.example.billingbackend.service.Impl;
 
 import com.example.billingbackend.entity.CustomerEntity;
+import com.example.billingbackend.entity.Item;
 import com.example.billingbackend.repository.CustomerRepository;
 import com.example.billingbackend.service.CustomerService;
 import lombok.AllArgsConstructor;
@@ -38,13 +39,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerEntity deleteCustomers(CustomerEntity customer, Long id) {
-        CustomerEntity customerfind = customerRepository.findById(id).get();
-        if(customer.isActive() ){
-            customer.setActive(false);
-            customerRepository.save(customer);
-        }
-        return customerRepository.save(customerfind);
+    public void deleteCustomers(CustomerEntity request) {
+//        public void deleteItems(Item item) {
+//            itemRepository.deleteItem(false,item.getId(), item.getBusinessID());
+//        }
+        customerRepository.deleteCustomer(false, request.getId(), request.getBusinessID());
+
     }
 
     @Override
