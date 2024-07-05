@@ -11,7 +11,7 @@ public interface CustomerService {
     List<CustomerEntity> getAllCustomers(String businessID);
     CustomerEntity findByCustomerId(Long id);
     CustomerEntity updateCustomer(CustomerEntity customer);
-    CustomerEntity deleteCustomers(CustomerEntity customer1, Long id);
+    void deleteCustomers(CustomerEntity request);
 
     CustomerEntity updateCustomerByBusinessID(CustomerEntity customerEntity);
 

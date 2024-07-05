@@ -48,10 +48,10 @@ public class CustomerController {
     }
 
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<CustomerEntity> deleteCustomer(@RequestBody CustomerEntity customer1, @PathVariable Long id){
-        CustomerEntity customs=customerService.deleteCustomers(customer1,id);
-        return new ResponseEntity<>(customs,HttpStatus.OK);
+    @PostMapping("delete")
+    public ResponseEntity<String> deleteCustomer(@RequestBody CustomerEntity request){
+        customerService.deleteCustomers(request);
+        return new ResponseEntity<>("deleted successfully",HttpStatus.OK);
 
     }
 }
