@@ -29,7 +29,7 @@ public class BillingEntity {
     @Column(nullable = false)
     public Long customerID;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     public String billNumber;
 
     @NotEmpty

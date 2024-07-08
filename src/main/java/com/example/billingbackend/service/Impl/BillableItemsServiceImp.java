@@ -21,7 +21,7 @@ public class   BillableItemsServiceImp implements BillableItemsService {
     private ModelMapper modelMapper;
     private  BillingRepository billingRepository;
     private BillingItemRepository billingItemRepository;
-    BillingEntity billingEntity;
+//    private BillingEntity billingEntity;
 
     @Override
     @Transactional
@@ -30,21 +30,21 @@ public class   BillableItemsServiceImp implements BillableItemsService {
 //        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< billableItemsDto == " + billableItemsDto.getItems());
         System.out.println(">>>>>>>>>>>>>>> request >>>>>>>>>>>>>>>>>>>>>>"+request);
 
-//        BillingEntity billData = new BillingEntity();
-//
-//        billData.setId(Long.valueOf(23));
-//        billData.setBusinessID(request.getBusinessID());
-//        billData.setBillingID(request.getBillingID());
-//        billData.setCustomerID(request.getCustomerID());
-//        billData.setBillNumber(request.getBillNumber());
-//        billData.setCustomerName(request.getCustomerName());
-//        billData.setDate(request.getDate());
-//        billData.setActive(true);
-//        billData.setTotalAmount(request.getTotalAmount());
-//        billData.setPaidAmount(request.getPaidAmount());
-//        billData.setBalanceAmount(request.getBalanceAmount());
+        BillingEntity billData = new BillingEntity();
 
-//        billingRepository.save(billData);
+//        billData.setId(Long.valueOf(23));
+        billData.setBusinessID(request.getBusinessID());
+        billData.setBillingID(request.getBillingID());
+        billData.setCustomerID(request.getCustomerID());
+        billData.setBillNumber(request.getBillNumber());
+        billData.setCustomerName(request.getCustomerName());
+        billData.setDate(request.getDate());
+        billData.setActive(true);
+        billData.setTotalAmount(request.getTotalAmount());
+        billData.setPaidAmount(request.getPaidAmount());
+        billData.setBalanceAmount(request.getBalanceAmount());
+
+        billingRepository.save(billData);
 
 
         List<BillingItemsEntity> billingItemsEntities = request.getItems();
