@@ -19,39 +19,35 @@ import java.util.stream.Collectors;
 public class   BillableItemsServiceImp implements BillableItemsService {
 
     private ModelMapper modelMapper;
-    private BillingRepository billingRepository;
+    private  BillingRepository billingRepository;
     private BillingItemRepository billingItemRepository;
+    BillingEntity billingEntity;
 
     @Override
     @Transactional
-    public void saveBillableItems(BillableItemsDto billableItemsDto) {
+    public void saveBillableItems(BillableItemsDto request) {
 //        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< billableItemsDto == " + billableItemsDto);
 //        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< billableItemsDto == " + billableItemsDto.getItems());
+        System.out.println(">>>>>>>>>>>>>>> request >>>>>>>>>>>>>>>>>>>>>>"+request);
 
-//        if (billableItemsDto.getItems() == null) {
-//            throw new IllegalArgumentException("Items list cannot be null");
-//        }
-
-        // Map BillableItemsDto to BillingEntity
-        BillingEntity billingEntity = modelMapper.map(billableItemsDto, BillingEntity.class);
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+billingEntity);
-
-        // Save BillingEntity
-//        BillingEntity savedBillingEntity = billingRepository.save(billingEntity);
-
-//        // Map List<BillingItemsEntity> from BillableItemsDto.getItems()
-//        List<BillingItemsEntity> billingItemsEntities = billableItemsDto.getItems().stream()
-//                .map(itemDto -> modelMapper.map(itemDto, BillingItemsEntity.class))
-//                .peek(entity -> entity.setBillingNumber(savedBillingEntity.getId())) // Set the billingNumber from saved BillingEntity
-//                .collect(Collectors.toList());
+//        BillingEntity billData = new BillingEntity();
 //
-//        // Save all BillingItemsEntity
-//        billingItemRepository.saveAll(billingItemsEntities);
+//        billData.setId(Long.valueOf(23));
+//        billData.setBusinessID(request.getBusinessID());
+//        billData.setBillingID(request.getBillingID());
+//        billData.setCustomerID(request.getCustomerID());
+//        billData.setBillNumber(request.getBillNumber());
+//        billData.setCustomerName(request.getCustomerName());
+//        billData.setDate(request.getDate());
+//        billData.setActive(true);
+//        billData.setTotalAmount(request.getTotalAmount());
+//        billData.setPaidAmount(request.getPaidAmount());
+//        billData.setBalanceAmount(request.getBalanceAmount());
 
-//        split data using model mapper
+//        billingRepository.save(billData);
 
-//        split data like BillingEntity ===>  save the data to billing table
 
-//        split data like BillingItemsEntity ( billableItemsDto.getItems()) ===>  saveAll the data to billingItems table
+        List<BillingItemsEntity> billingItemsEntities = request.getItems();
+        billingItemRepository.saveAll(billingItemsEntities);
     }
 }
