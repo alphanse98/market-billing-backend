@@ -30,7 +30,7 @@ public class BillingEntity {
     public Long customerID;
 
     @Column(nullable = false)
-    public String billNumber;
+    public Long billNumber;
 
     @NotEmpty
     @Column(nullable = false)

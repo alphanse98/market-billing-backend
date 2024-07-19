@@ -9,5 +9,9 @@ public interface BillableItemsService {
 
     void saveBillableItems(BillableItemsDto billableItemsDto);
 
+    void updateBillableItemsByBusinessID(BillableItemsDto billableItemsDto);
+
+
+
 
 }

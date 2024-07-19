@@ -16,5 +16,15 @@ public interface BillingRepository extends JpaRepository<BillingEntity,Long> {
     @Modifying
     @Transactional
     @Query("UPDATE BillingEntity i SET i.billingID = :billingID, i.customerID =:customerID, i.billNumber= :billNumber, i.customerName = :customerName, i.date = :date, i.isActive = :isActive, i.totalAmount = :totalAmount, i.paidAmount = :paidAmount, i.balanceAmount= :balanceAmount WHERE i.id = :id AND i.businessID = :businessID")
-    int updateBillingByBusinessIDandId(@Param("billingID") String billingID, @Param("customerID") Long customerID, @Param("billNumber") String billNumber, @Param("customerName") String customerName, @Param("date") String date, @Param("isActive") boolean isActive, @Param("totalAmount") Long totalAmount, @Param("paidAmount") Long paidAmount, @Param("balanceAmount") Long balanceAmount, @Param("id") Long id, @Param("businessID") String businessID);
+    int updateBillingByBusinessIDandId(@Param("billingID") String billingID, @Param("customerID") Long customerID, @Param("billNumber") Long billNumber, @Param("customerName") String customerName, @Param("date") String date, @Param("isActive") boolean isActive, @Param("totalAmount") Long totalAmount, @Param("paidAmount") Long paidAmount, @Param("balanceAmount") Long balanceAmount, @Param("id") Long id, @Param("businessID") String businessID);
+
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE BillingEntity i SET  i.billingID = :billingID, i.customerID =:customerID, i.customerName = :customerName, i.date = :date, i.isActive = :isActive, i.totalAmount = :totalAmount, i.paidAmount = :paidAmount, i.balanceAmount= :balanceAmount WHERE i.billNumber= :billNumber AND i.businessID = :businessID")
+    void updateByBusinessIdAndBillingNumber( @Param("billingID") String billingID, @Param("customerID") Long customerID, @Param("customerName") String customerName, @Param("date") String date, @Param("isActive") boolean isActive, @Param("totalAmount") Long totalAmount, @Param("paidAmount") Long paidAmount, @Param("balanceAmount") Long balanceAmount, @Param("billNumber") Long billNumber, @Param("businessID") String businessID);
+
+
+
+
 }
