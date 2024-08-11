@@ -21,18 +21,12 @@ public class   BillableItemsServiceImp implements BillableItemsService {
     private ModelMapper modelMapper;
     private  BillingRepository billingRepository;
     private BillingItemRepository billingItemRepository;
-//    private BillingEntity billingEntity;
 
     @Override
     @Transactional
     public void saveBillableItems(BillableItemsDto request) {
-//        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< billableItemsDto == " + billableItemsDto);
-//        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< billableItemsDto == " + billableItemsDto.getItems());
-        System.out.println(">>>>>>>>>>>>>>> request >>>>>>>>>>>>>>>>>>>>>>"+request);
-
+        //
         BillingEntity billData = new BillingEntity();
-
-//        billData.setId(Long.valueOf(23));
         billData.setBusinessID(request.getBusinessID());
         billData.setBillingID(request.getBillingID());
         billData.setCustomerID(request.getCustomerID());
@@ -46,8 +40,27 @@ public class   BillableItemsServiceImp implements BillableItemsService {
 
         billingRepository.save(billData);
 
-
         List<BillingItemsEntity> billingItemsEntities = request.getItems();
         billingItemRepository.saveAll(billingItemsEntities);
     }
+
+    @Override
+    public void updateBillableItemsByBusinessID(BillableItemsDto billableItemsDto) {
+
+        String businessID = billableItemsDto.getBusinessID();
+        Long billNumber= billableItemsDto.getBillNumber();
+        billingItemRepository.deleteByBusinessIdAndBillingNumber(businessID, billNumber);
+
+        // add billing items to database (saveAll)
+        // update billing based on businessID and billNumber
+
+        billingRepository.updateByBusinessIdAndBillingNumber(billableItemsDto.getBillingID(),billableItemsDto.getCustomerID(),billableItemsDto.getCustomerName(),billableItemsDto.getDate(),billableItemsDto.isActive(),billableItemsDto.getTotalAmount(),billableItemsDto.getPaidAmount(),billableItemsDto.getBalanceAmount(),billableItemsDto.getBillNumber(),billableItemsDto.getBusinessID());
+
+        List<BillingItemsEntity> billingItemsEntityList = billableItemsDto.getItems();
+        billingItemRepository.saveAll(billingItemsEntityList);
+
+    }
+
+
+
 }

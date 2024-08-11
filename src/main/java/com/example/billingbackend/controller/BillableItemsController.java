@@ -6,10 +6,7 @@ import com.example.billingbackend.service.BillableItemsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -23,6 +20,15 @@ public class BillableItemsController {
 
         return  new ResponseEntity<>("ok",HttpStatus.OK);
     }
+
+
+    @PutMapping("update")
+    public ResponseEntity<String> updateBilling(@RequestBody BillableItemsDto billableItemsDto){
+        billableItemsService.updateBillableItemsByBusinessID(billableItemsDto);
+        return new ResponseEntity<>("ok", HttpStatus.OK);
+    }
+
+
 
 
 }

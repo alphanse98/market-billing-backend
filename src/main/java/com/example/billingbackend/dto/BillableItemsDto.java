@@ -27,7 +27,7 @@ public class BillableItemsDto {
 
     public Long customerID;
 
-    public String billNumber;
+    public Long billNumber;
 
 
     public String customerName;
